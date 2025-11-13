@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"steak-beer-app","appId":"1:999358432261:android:954a384cb03438fc79886c","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"steak-beer-app","configurations":{"android":"1:999358432261:android:954a384cb03438fc79886c","web":"1:999358432261:web:301ccc19a7582b8a79886c"}}}}}}

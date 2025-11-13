@@ -1,0 +1,84 @@
+mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "This operation is used to seed the database with example data.") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      address: "123 Main St",
+      createdAt: "2024-04-29T12:00:00Z",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      phone: "555-123-4567",
+      photoUrl: "http://example.com/demouser1.jpg",
+      userType: "customer"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      address: "456 Elm St",
+      createdAt: "2024-04-29T13:00:00Z",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      phone: "555-987-6543",
+      photoUrl: "http://example.com/demouser2.jpg",
+      userType: "seller"
+    }
+  ])
+  seller_insertMany(data: [
+    {
+      id: "660e8400-e29b-41d4-a716-446655440002",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      averageRating: 4.5,
+      createdAt: "2024-04-29T14:00:00Z",
+      description: "Demo seller 1",
+      instagramHandle: "@demoseller1",
+      sellerName: "Demo Seller 1",
+      whatsappNumber: "555-111-2222"
+    }
+  ])
+  product_insertMany(data: [
+    {
+      id: "770e8400-e29b-41d4-a716-446655440003",
+      sellerId: "660e8400-e29b-41d4-a716-446655440002",
+      availableStock: 100,
+      category: "Category1",
+      createdAt: "2024-04-29T15:00:00Z",
+      description: "Demo product 1",
+      imageUrl: "http://example.com/demoproduct1.jpg",
+      ingredients: "Ingredient1, Ingredient2",
+      name: "Demo Product 1",
+      price: 19.99,
+      unit: "unit",
+      weight: 1.0
+    }
+  ])
+  review_insertMany(data: [
+    {
+      id: "880e8400-e29b-41d4-a716-446655440004",
+      productId: "770e8400-e29b-41d4-a716-446655440003",
+      sellerId: "660e8400-e29b-41d4-a716-446655440002",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      comment: "Demo review 1",
+      createdAt: "2024-04-29T16:00:00Z",
+      rating: 5
+    }
+  ])
+  order_insertMany(data: [
+    {
+      id: "990e8400-e29b-41d4-a716-446655440005",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-04-29T17:00:00Z",
+      deliveryAddress: "789 Oak St",
+      deliveryMethod: "delivery",
+      orderDate: "2024-04-29T17:00:00Z",
+      pickupTime: "2024-04-29T18:00:00Z",
+      status: "pending",
+      totalAmount: 25.00
+    }
+  ])
+  orderItem_insertMany(data: [
+    {
+      orderId: "990e8400-e29b-41d4-a716-446655440005",
+      productId: "770e8400-e29b-41d4-a716-446655440003",
+      priceAtTimeOfOrder: 19.99,
+      quantity: 1
+    }
+  ])
+}
